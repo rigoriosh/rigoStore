@@ -1,0 +1,12 @@
+<!-- <swiper [slidesPerView]="1" [spaceBetween]="5" (swiper)="onSwiper($event)" (slideChange)="onSlideChange()">    
+    <ng-template swiperSlide *ngFor="let img of images; let i=index">
+        <img [src]="img" alt="iamgen de banner">
+    </ng-template>    
+  </swiper> -->
+
+  <swiper effect="fade">
+    <ng-template swiperSlide *ngFor="let img of images; let i=index">
+        <img [src]="img" alt="iamgen de banner" width="100%">
+    </ng-template>
+    
+  </swiper>

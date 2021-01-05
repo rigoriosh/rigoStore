@@ -1,0 +1,9 @@
+:host{ /* host es la etiqueta padre de donde fue llamado el componente */
+    margin: 2px;
+    border: 1px solid black;
+    border-radius: 5px;
+    display: block;
+}
+img{
+    max-width: 100%;    
+}
