@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ContactsComponent } from './components/contacts/contacts.component';
-import { HomeComponent } from './components/home/home.component';
-import { InicioComponent } from './components/inicio/inicio.component';
+import { HomeComponent } from './components/productos/productos.component'; // products
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { AdminGuard } from './admin.guard';
 
 const routes: Routes = [
-  {path: 'home', component: InicioComponent},
-  {path: 'products', component: HomeComponent},
-  {path: 'contact', component: ContactsComponent},
+  {path: 'home', loadChildren: () => import('./components/inicio/home.module').then(m => m.HomeModule)},
+  {path: 'products', component: HomeComponent, canActivate: [AdminGuard]}, // products
+  {path: 'contact', component: ContactsComponent, canActivate: [AdminGuard]},
   {path: 'products/:id', component: ProductDetailComponent},
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: '**', redirectTo: 'home', pathMatch: 'full'},

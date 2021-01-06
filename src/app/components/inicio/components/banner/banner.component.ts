@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import SwiperCore from "swiper/core";
 
 @Component({
   selector: 'app-banner',

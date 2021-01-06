@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductsService } from 'src/app/services/products.service';
+import { ProductsService } from 'src/app/core/services/products/products.service';
 import { Product } from '../../product.model';
 import { Router } from '@angular/router';
 
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-productos',
+  templateUrl: './productos.component.html',
+  styleUrls: ['./productos.component.scss']
 })
 export class HomeComponent implements OnInit {
   title = 'rigoStore';
@@ -20,8 +20,8 @@ export class HomeComponent implements OnInit {
   }
   clickProduct(id: string): void{
     console.log(id);
-  }  
-  verDetalle(id: string){
+  }
+  verDetalle(id: string): void{
     console.log(id);
     this.misRutas.navigate(['products', id]);
   }

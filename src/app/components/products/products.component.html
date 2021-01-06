@@ -3,5 +3,5 @@
     <img [src]="producto.image" alt="{{producto.title}}">
     <h4>{{producto.description}}</h4>
     <strong>{{producto.price}}</strong> <br>
-    <button mat-button (click)="addCar(producto.id)">Agregar al carrito</button>
+    <button mat-button (click)="addCar(producto.id)" mat-raised-button color="primary">Agregar al carrito</button>
 </div>
