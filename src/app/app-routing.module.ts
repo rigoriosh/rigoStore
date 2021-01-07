@@ -7,6 +7,7 @@ import { AdminGuard } from './admin.guard';
 
 const routes: Routes = [
   {path: 'home', loadChildren: () => import('./components/inicio/home.module').then(m => m.HomeModule)},
+  {path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)},
   {path: 'products', component: HomeComponent, canActivate: [AdminGuard]}, // products
   {path: 'contact', component: ContactsComponent, canActivate: [AdminGuard]},
   {path: 'products/:id', component: ProductDetailComponent},

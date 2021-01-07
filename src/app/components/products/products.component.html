@@ -1,7 +1,19 @@
-<div *ngIf="producto !== undefined" class="producto-grid">
-    <h3>{{producto.title}}</h3>
-    <img [src]="producto.image" alt="{{producto.title}}">
-    <h4>{{producto.description}}</h4>
-    <strong>{{producto.price}}</strong> <br>
-    <button mat-button (click)="addCar(producto.id)" mat-raised-button color="primary">Agregar al carrito</button>
+<div *ngIf="producto !== undefined">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>{{ producto.title | uppercase }}</mat-card-title>
+            <mat-card-subtitle>{{ producto.price | currency }}</mat-card-subtitle>
+        </mat-card-header>        
+        <div class="crop-image">
+            <img [src]="producto.image" alt="{{producto.title}}">
+        </div>        
+        <mat-card-content>                        
+            <p>{{producto.description}}</p>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-button (click)="addCar(producto.id)" mat-raised-button color="primary">Agregar producto</button>
+            <button mat-button (click)="editaP(producto.id)" mat-raised-button color="primary">Editar producto</button>
+            <button mat-button (click)="deleteP(producto.id)" mat-raised-button color="primary">Eliminarar producto</button>
+        </mat-card-actions>
+    </mat-card>        
 </div>

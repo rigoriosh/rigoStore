@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../../../product.model';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -49,10 +51,26 @@ export class ProductsService {
       description: 'bla bla bla bla bla'
     },
   ];
-  constructor() { }
-  getAllPorudcts = () => this.products;
+  constructor(private myHttp: HttpClient) { }
+  getProductById(id: string): any {
+    return this.myHttp.get<Product>(`${environment.url_Api}/${id}`);
+  }
 
-  getProductById(id: string): any{
-    return this.products.find(e => e.id === id);
+  getAllPorudcts = () => this.myHttp.get<Product[]>(environment.url_Api);
+
+  createPorduct(prod: Product){
+    console.log(prod);
+    return this.myHttp.post(environment.url_Api, prod);
+  }
+
+  upDateProuduct(id: string, changes: Partial<Product>){
+    console.log(id, changes, `${environment.url_Api}/${id}`);
+    return this.myHttp.put(`${environment.url_Api}/${id}`, changes);
+  }
+
+  deleteProd(id: string){
+    console.log('eliminando' , id);
+    console.log(`${environment.url_Api}/${id}`);
+    return this.myHttp.delete(`${environment.url_Api}/${id}`);
   }
 }

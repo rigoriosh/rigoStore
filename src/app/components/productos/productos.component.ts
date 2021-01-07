@@ -13,10 +13,18 @@ export class HomeComponent implements OnInit {
   title = 'rigoStore';
   products: Product[];
   constructor(private servicioProducto: ProductsService, private misRutas: Router) {
-    this.products = this.servicioProducto.getAllPorudcts();
+    this.products = [];
+  }
+
+  fetchProduct(): void{
+    this.servicioProducto.getAllPorudcts().subscribe(p => {
+      console.log(p);
+      this.products = p;
+    });
   }
 
   ngOnInit(): void {
+    this.fetchProduct();
   }
   clickProduct(id: string): void{
     console.log(id);
